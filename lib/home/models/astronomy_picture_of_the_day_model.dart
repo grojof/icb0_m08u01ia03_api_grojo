@@ -1,22 +1,22 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'apod_model.freezed.dart';
-part 'apod_model.g.dart';
+part 'astronomy_picture_of_the_day_model.freezed.dart';
+part 'astronomy_picture_of_the_day_model.g.dart';
 
 @freezed
-class ApodModel with _$ApodModel {
-  const factory ApodModel({
+class AstronomyPictureOfTheDayModel with _$AstronomyPictureOfTheDayModel {
+  const factory AstronomyPictureOfTheDayModel({
     required String copyright,
     required DateTime date,
     required String hdurl,
-    required String mediaType,
-    required String serviceVersion,
+    required String media_type,
+    required String service_version,
     required String title,
     required String url,
-  }) = _ApodModel;
+  }) = _AstronomyPictureOfTheDayModel;
 
-  factory ApodModel.fromJson(Map<String, dynamic> json) =>
-      _$ApodModelFromJson(json);
+  factory AstronomyPictureOfTheDayModel.fromJson(Map<String, dynamic> json) =>
+      _$AstronomyPictureOfTheDayModelFromJson(json);
 }
 
 

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:icb0_m08u01ia03_api_grojo/home/views/epic_image_view.dart';
+import 'package:icb0_m08u01ia03_api_grojo/home/views/views.dart';
 import 'package:icb0_m08u01ia03_api_grojo/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -15,7 +17,7 @@ class App extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const SizedBox(),
+      home: const EpicImage(),
     );
   }
 }
