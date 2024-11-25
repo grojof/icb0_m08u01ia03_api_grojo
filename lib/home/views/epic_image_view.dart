@@ -103,6 +103,9 @@ class _EpicImageViewState extends State<EpicImageView> {
                   astronomyPictureOfTheDayLoaded: (_) => const Center(
                     child: CircularProgressIndicator(),
                   ),
+                  astronomyPictureOfTheDayListLoaded: (_) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
                   loading: (_) => const Center(
                     child: CircularProgressIndicator(),
                   ),

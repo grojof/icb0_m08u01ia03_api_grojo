@@ -10,6 +10,16 @@ class ApiNasaRepository {
     return apiNasaService.getAstronomyPictureOfTheDay(date: date);
   }
 
+  Future<List<AstronomyPictureOfTheDayModel>> getApodImagesForDateRange({
+    required DateTime startDate,
+    required DateTime endDate,
+  }) async {
+    return apiNasaService.getAstronomyPictureOfTheDayByDateRange(
+      startDate: startDate,
+      endDate: endDate,
+    );
+  }
+
   Future<List<EpicImageMetadata>> getEpicImages({
     required EpicImageType type,
     required DateTime date,

@@ -4,6 +4,11 @@ part of 'home_bloc.dart';
 class HomeEvent with _$HomeEvent {
   const factory HomeEvent.started() = _Started;
 
+  const factory HomeEvent.fetchApodByDateRange({
+    required DateTime startDate,
+    required DateTime endDate,
+  }) = _FetchApodByDateRange;
+
   const factory HomeEvent.fetchEpicImages({
     required DateTime startDate,
     required DateTime endDate,

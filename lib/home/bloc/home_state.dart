@@ -10,6 +10,10 @@ class HomeState with _$HomeState {
     required AstronomyPictureOfTheDayModel astronomyPictureOfTheDay,
   }) = _AstronomyPictureOfTheDayLoaded;
 
+  const factory HomeState.astronomyPictureOfTheDayListLoaded({
+    required List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList,
+  }) = _AstronomyPictureOfTheDayListLoaded;
+
   const factory HomeState.epicImagesLoaded({
     required List<EpicImageMetadata> images,
   }) = _EpicImagesLoaded;

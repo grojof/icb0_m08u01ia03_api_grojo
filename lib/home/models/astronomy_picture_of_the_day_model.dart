@@ -6,13 +6,13 @@ part 'astronomy_picture_of_the_day_model.g.dart';
 @freezed
 class AstronomyPictureOfTheDayModel with _$AstronomyPictureOfTheDayModel {
   const factory AstronomyPictureOfTheDayModel({
-    required String copyright,
     required DateTime date,
-    required String hdurl,
     required String media_type,
-    required String service_version,
     required String title,
     required String url,
+    String? hdurl,
+    String? explanation,
+    String? copyright,
   }) = _AstronomyPictureOfTheDayModel;
 
   factory AstronomyPictureOfTheDayModel.fromJson(Map<String, dynamic> json) =>

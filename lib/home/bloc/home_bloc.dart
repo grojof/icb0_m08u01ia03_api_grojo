@@ -13,6 +13,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       await event.map(
         started: (e) => _onInitialState(e, emit),
         fetchEpicImages: (e) => _onFetchEpicImages(e, emit),
+        fetchApodByDateRange: (value) => _onFetchApodByDateRange(value, emit),
       );
     });
   }
@@ -32,6 +33,28 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         astronomyPictureOfTheDay: apod,
       ),
     );
+  }
+
+  Future<void> _onFetchApodByDateRange(
+    _FetchApodByDateRange event,
+    Emitter<HomeState> emit,
+  ) async {
+    emit(const HomeState.loading());
+
+    try {
+      final images = await apiNasaRepository.getApodImagesForDateRange(
+        startDate: event.startDate,
+        endDate: event.endDate,
+      );
+
+      emit(
+        HomeState.astronomyPictureOfTheDayListLoaded(
+          astronomyPictureOfTheDayList: images,
+        ),
+      );
+    } catch (e) {
+      emit(HomeState.error(message: e.toString()));
+    }
   }
 
   Future<void> _onFetchEpicImages(

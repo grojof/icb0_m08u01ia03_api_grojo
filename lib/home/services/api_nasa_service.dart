@@ -58,6 +58,41 @@ class ApiNasaService {
     );
   }
 
+  /// Get Astronomy Pictures of the Day for a date range
+  Future<List<AstronomyPictureOfTheDayModel>>
+      getAstronomyPictureOfTheDayByDateRange({
+    required DateTime startDate,
+    required DateTime endDate,
+  }) async {
+    // Format dates to 'yyyy-MM-dd'
+    final formattedStartDate = DateFormat('yyyy-MM-dd').format(startDate);
+    final formattedEndDate = DateFormat('yyyy-MM-dd').format(endDate);
+
+    // Fetch data from the API
+    final response = await fetchData(
+      endpoint: '/planetary/apod',
+      queryParams: {
+        'start_date': formattedStartDate,
+        'end_date': formattedEndDate,
+      },
+    );
+
+    // Parse response as a list of models
+    if (response is List) {
+      return response
+          .map(
+            (json) => AstronomyPictureOfTheDayModel.fromJson(
+              json as Map<String, dynamic>,
+            ),
+          )
+          .toList();
+    } else {
+      throw Exception(
+        'Error: Expected a list but received ${response.runtimeType}',
+      );
+    }
+  }
+
   /// Get EPIC metadata or images
   Future<List<EpicImageMetadata>> getEpicImages({
     required EpicImageType type,

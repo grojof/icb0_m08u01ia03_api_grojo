@@ -20,18 +20,24 @@ mixin _$HomeEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(DateTime startDate, DateTime endDate)
+        fetchApodByDateRange,
+    required TResult Function(DateTime startDate, DateTime endDate)
         fetchEpicImages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(DateTime startDate, DateTime endDate)?
+        fetchApodByDateRange,
     TResult? Function(DateTime startDate, DateTime endDate)? fetchEpicImages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(DateTime startDate, DateTime endDate)?
+        fetchApodByDateRange,
     TResult Function(DateTime startDate, DateTime endDate)? fetchEpicImages,
     required TResult orElse(),
   }) =>
@@ -39,18 +45,21 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_FetchApodByDateRange value) fetchApodByDateRange,
     required TResult Function(_FetchEpicImages value) fetchEpicImages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_FetchApodByDateRange value)? fetchApodByDateRange,
     TResult? Function(_FetchEpicImages value)? fetchEpicImages,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_FetchApodByDateRange value)? fetchApodByDateRange,
     TResult Function(_FetchEpicImages value)? fetchEpicImages,
     required TResult orElse(),
   }) =>
@@ -120,6 +129,8 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(DateTime startDate, DateTime endDate)
+        fetchApodByDateRange,
+    required TResult Function(DateTime startDate, DateTime endDate)
         fetchEpicImages,
   }) {
     return started();
@@ -129,6 +140,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(DateTime startDate, DateTime endDate)?
+        fetchApodByDateRange,
     TResult? Function(DateTime startDate, DateTime endDate)? fetchEpicImages,
   }) {
     return started?.call();
@@ -138,6 +151,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(DateTime startDate, DateTime endDate)?
+        fetchApodByDateRange,
     TResult Function(DateTime startDate, DateTime endDate)? fetchEpicImages,
     required TResult orElse(),
   }) {
@@ -151,6 +166,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_FetchApodByDateRange value) fetchApodByDateRange,
     required TResult Function(_FetchEpicImages value) fetchEpicImages,
   }) {
     return started(this);
@@ -160,6 +176,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_FetchApodByDateRange value)? fetchApodByDateRange,
     TResult? Function(_FetchEpicImages value)? fetchEpicImages,
   }) {
     return started?.call(this);
@@ -169,6 +186,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_FetchApodByDateRange value)? fetchApodByDateRange,
     TResult Function(_FetchEpicImages value)? fetchEpicImages,
     required TResult orElse(),
   }) {
@@ -181,6 +199,171 @@ class _$StartedImpl implements _Started {
 
 abstract class _Started implements HomeEvent {
   const factory _Started() = _$StartedImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchApodByDateRangeImplCopyWith<$Res> {
+  factory _$$FetchApodByDateRangeImplCopyWith(_$FetchApodByDateRangeImpl value,
+          $Res Function(_$FetchApodByDateRangeImpl) then) =
+      __$$FetchApodByDateRangeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DateTime startDate, DateTime endDate});
+}
+
+/// @nodoc
+class __$$FetchApodByDateRangeImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$FetchApodByDateRangeImpl>
+    implements _$$FetchApodByDateRangeImplCopyWith<$Res> {
+  __$$FetchApodByDateRangeImplCopyWithImpl(_$FetchApodByDateRangeImpl _value,
+      $Res Function(_$FetchApodByDateRangeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? startDate = null,
+    Object? endDate = null,
+  }) {
+    return _then(_$FetchApodByDateRangeImpl(
+      startDate: null == startDate
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      endDate: null == endDate
+          ? _value.endDate
+          : endDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchApodByDateRangeImpl implements _FetchApodByDateRange {
+  const _$FetchApodByDateRangeImpl(
+      {required this.startDate, required this.endDate});
+
+  @override
+  final DateTime startDate;
+  @override
+  final DateTime endDate;
+
+  @override
+  String toString() {
+    return 'HomeEvent.fetchApodByDateRange(startDate: $startDate, endDate: $endDate)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchApodByDateRangeImpl &&
+            (identical(other.startDate, startDate) ||
+                other.startDate == startDate) &&
+            (identical(other.endDate, endDate) || other.endDate == endDate));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, startDate, endDate);
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchApodByDateRangeImplCopyWith<_$FetchApodByDateRangeImpl>
+      get copyWith =>
+          __$$FetchApodByDateRangeImplCopyWithImpl<_$FetchApodByDateRangeImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(DateTime startDate, DateTime endDate)
+        fetchApodByDateRange,
+    required TResult Function(DateTime startDate, DateTime endDate)
+        fetchEpicImages,
+  }) {
+    return fetchApodByDateRange(startDate, endDate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(DateTime startDate, DateTime endDate)?
+        fetchApodByDateRange,
+    TResult? Function(DateTime startDate, DateTime endDate)? fetchEpicImages,
+  }) {
+    return fetchApodByDateRange?.call(startDate, endDate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(DateTime startDate, DateTime endDate)?
+        fetchApodByDateRange,
+    TResult Function(DateTime startDate, DateTime endDate)? fetchEpicImages,
+    required TResult orElse(),
+  }) {
+    if (fetchApodByDateRange != null) {
+      return fetchApodByDateRange(startDate, endDate);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_FetchApodByDateRange value) fetchApodByDateRange,
+    required TResult Function(_FetchEpicImages value) fetchEpicImages,
+  }) {
+    return fetchApodByDateRange(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_FetchApodByDateRange value)? fetchApodByDateRange,
+    TResult? Function(_FetchEpicImages value)? fetchEpicImages,
+  }) {
+    return fetchApodByDateRange?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_FetchApodByDateRange value)? fetchApodByDateRange,
+    TResult Function(_FetchEpicImages value)? fetchEpicImages,
+    required TResult orElse(),
+  }) {
+    if (fetchApodByDateRange != null) {
+      return fetchApodByDateRange(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchApodByDateRange implements HomeEvent {
+  const factory _FetchApodByDateRange(
+      {required final DateTime startDate,
+      required final DateTime endDate}) = _$FetchApodByDateRangeImpl;
+
+  DateTime get startDate;
+  DateTime get endDate;
+
+  /// Create a copy of HomeEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FetchApodByDateRangeImplCopyWith<_$FetchApodByDateRangeImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -263,6 +446,8 @@ class _$FetchEpicImagesImpl implements _FetchEpicImages {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(DateTime startDate, DateTime endDate)
+        fetchApodByDateRange,
+    required TResult Function(DateTime startDate, DateTime endDate)
         fetchEpicImages,
   }) {
     return fetchEpicImages(startDate, endDate);
@@ -272,6 +457,8 @@ class _$FetchEpicImagesImpl implements _FetchEpicImages {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function(DateTime startDate, DateTime endDate)?
+        fetchApodByDateRange,
     TResult? Function(DateTime startDate, DateTime endDate)? fetchEpicImages,
   }) {
     return fetchEpicImages?.call(startDate, endDate);
@@ -281,6 +468,8 @@ class _$FetchEpicImagesImpl implements _FetchEpicImages {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function(DateTime startDate, DateTime endDate)?
+        fetchApodByDateRange,
     TResult Function(DateTime startDate, DateTime endDate)? fetchEpicImages,
     required TResult orElse(),
   }) {
@@ -294,6 +483,7 @@ class _$FetchEpicImagesImpl implements _FetchEpicImages {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_FetchApodByDateRange value) fetchApodByDateRange,
     required TResult Function(_FetchEpicImages value) fetchEpicImages,
   }) {
     return fetchEpicImages(this);
@@ -303,6 +493,7 @@ class _$FetchEpicImagesImpl implements _FetchEpicImages {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_FetchApodByDateRange value)? fetchApodByDateRange,
     TResult? Function(_FetchEpicImages value)? fetchEpicImages,
   }) {
     return fetchEpicImages?.call(this);
@@ -312,6 +503,7 @@ class _$FetchEpicImagesImpl implements _FetchEpicImages {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_FetchApodByDateRange value)? fetchApodByDateRange,
     TResult Function(_FetchEpicImages value)? fetchEpicImages,
     required TResult orElse(),
   }) {
@@ -346,6 +538,9 @@ mixin _$HomeState {
     required TResult Function(
             AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)
         astronomyPictureOfTheDayLoaded,
+    required TResult Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)
+        astronomyPictureOfTheDayListLoaded,
     required TResult Function(List<EpicImageMetadata> images) epicImagesLoaded,
     required TResult Function(String message) error,
   }) =>
@@ -356,6 +551,9 @@ mixin _$HomeState {
     TResult? Function()? loading,
     TResult? Function(AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)?
         astronomyPictureOfTheDayLoaded,
+    TResult? Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
+        astronomyPictureOfTheDayListLoaded,
     TResult? Function(List<EpicImageMetadata> images)? epicImagesLoaded,
     TResult? Function(String message)? error,
   }) =>
@@ -366,6 +564,9 @@ mixin _$HomeState {
     TResult Function()? loading,
     TResult Function(AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)?
         astronomyPictureOfTheDayLoaded,
+    TResult Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
+        astronomyPictureOfTheDayListLoaded,
     TResult Function(List<EpicImageMetadata> images)? epicImagesLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -377,6 +578,8 @@ mixin _$HomeState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_AstronomyPictureOfTheDayLoaded value)
         astronomyPictureOfTheDayLoaded,
+    required TResult Function(_AstronomyPictureOfTheDayListLoaded value)
+        astronomyPictureOfTheDayListLoaded,
     required TResult Function(_EpicImagesLoaded value) epicImagesLoaded,
     required TResult Function(_Error value) error,
   }) =>
@@ -387,6 +590,8 @@ mixin _$HomeState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_AstronomyPictureOfTheDayLoaded value)?
         astronomyPictureOfTheDayLoaded,
+    TResult? Function(_AstronomyPictureOfTheDayListLoaded value)?
+        astronomyPictureOfTheDayListLoaded,
     TResult? Function(_EpicImagesLoaded value)? epicImagesLoaded,
     TResult? Function(_Error value)? error,
   }) =>
@@ -397,6 +602,8 @@ mixin _$HomeState {
     TResult Function(_Loading value)? loading,
     TResult Function(_AstronomyPictureOfTheDayLoaded value)?
         astronomyPictureOfTheDayLoaded,
+    TResult Function(_AstronomyPictureOfTheDayListLoaded value)?
+        astronomyPictureOfTheDayListLoaded,
     TResult Function(_EpicImagesLoaded value)? epicImagesLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -470,6 +677,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function(
             AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)
         astronomyPictureOfTheDayLoaded,
+    required TResult Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)
+        astronomyPictureOfTheDayListLoaded,
     required TResult Function(List<EpicImageMetadata> images) epicImagesLoaded,
     required TResult Function(String message) error,
   }) {
@@ -483,6 +693,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? loading,
     TResult? Function(AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)?
         astronomyPictureOfTheDayLoaded,
+    TResult? Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
+        astronomyPictureOfTheDayListLoaded,
     TResult? Function(List<EpicImageMetadata> images)? epicImagesLoaded,
     TResult? Function(String message)? error,
   }) {
@@ -496,6 +709,9 @@ class _$InitialImpl implements _Initial {
     TResult Function()? loading,
     TResult Function(AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)?
         astronomyPictureOfTheDayLoaded,
+    TResult Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
+        astronomyPictureOfTheDayListLoaded,
     TResult Function(List<EpicImageMetadata> images)? epicImagesLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -513,6 +729,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_AstronomyPictureOfTheDayLoaded value)
         astronomyPictureOfTheDayLoaded,
+    required TResult Function(_AstronomyPictureOfTheDayListLoaded value)
+        astronomyPictureOfTheDayListLoaded,
     required TResult Function(_EpicImagesLoaded value) epicImagesLoaded,
     required TResult Function(_Error value) error,
   }) {
@@ -526,6 +744,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_AstronomyPictureOfTheDayLoaded value)?
         astronomyPictureOfTheDayLoaded,
+    TResult? Function(_AstronomyPictureOfTheDayListLoaded value)?
+        astronomyPictureOfTheDayListLoaded,
     TResult? Function(_EpicImagesLoaded value)? epicImagesLoaded,
     TResult? Function(_Error value)? error,
   }) {
@@ -539,6 +759,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_AstronomyPictureOfTheDayLoaded value)?
         astronomyPictureOfTheDayLoaded,
+    TResult Function(_AstronomyPictureOfTheDayListLoaded value)?
+        astronomyPictureOfTheDayListLoaded,
     TResult Function(_EpicImagesLoaded value)? epicImagesLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -600,6 +822,9 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(
             AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)
         astronomyPictureOfTheDayLoaded,
+    required TResult Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)
+        astronomyPictureOfTheDayListLoaded,
     required TResult Function(List<EpicImageMetadata> images) epicImagesLoaded,
     required TResult Function(String message) error,
   }) {
@@ -613,6 +838,9 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function(AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)?
         astronomyPictureOfTheDayLoaded,
+    TResult? Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
+        astronomyPictureOfTheDayListLoaded,
     TResult? Function(List<EpicImageMetadata> images)? epicImagesLoaded,
     TResult? Function(String message)? error,
   }) {
@@ -626,6 +854,9 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function(AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)?
         astronomyPictureOfTheDayLoaded,
+    TResult Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
+        astronomyPictureOfTheDayListLoaded,
     TResult Function(List<EpicImageMetadata> images)? epicImagesLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -643,6 +874,8 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_AstronomyPictureOfTheDayLoaded value)
         astronomyPictureOfTheDayLoaded,
+    required TResult Function(_AstronomyPictureOfTheDayListLoaded value)
+        astronomyPictureOfTheDayListLoaded,
     required TResult Function(_EpicImagesLoaded value) epicImagesLoaded,
     required TResult Function(_Error value) error,
   }) {
@@ -656,6 +889,8 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_AstronomyPictureOfTheDayLoaded value)?
         astronomyPictureOfTheDayLoaded,
+    TResult? Function(_AstronomyPictureOfTheDayListLoaded value)?
+        astronomyPictureOfTheDayListLoaded,
     TResult? Function(_EpicImagesLoaded value)? epicImagesLoaded,
     TResult? Function(_Error value)? error,
   }) {
@@ -669,6 +904,8 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_AstronomyPictureOfTheDayLoaded value)?
         astronomyPictureOfTheDayLoaded,
+    TResult Function(_AstronomyPictureOfTheDayListLoaded value)?
+        astronomyPictureOfTheDayListLoaded,
     TResult Function(_EpicImagesLoaded value)? epicImagesLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -778,6 +1015,9 @@ class _$AstronomyPictureOfTheDayLoadedImpl
     required TResult Function(
             AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)
         astronomyPictureOfTheDayLoaded,
+    required TResult Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)
+        astronomyPictureOfTheDayListLoaded,
     required TResult Function(List<EpicImageMetadata> images) epicImagesLoaded,
     required TResult Function(String message) error,
   }) {
@@ -791,6 +1031,9 @@ class _$AstronomyPictureOfTheDayLoadedImpl
     TResult? Function()? loading,
     TResult? Function(AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)?
         astronomyPictureOfTheDayLoaded,
+    TResult? Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
+        astronomyPictureOfTheDayListLoaded,
     TResult? Function(List<EpicImageMetadata> images)? epicImagesLoaded,
     TResult? Function(String message)? error,
   }) {
@@ -804,6 +1047,9 @@ class _$AstronomyPictureOfTheDayLoadedImpl
     TResult Function()? loading,
     TResult Function(AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)?
         astronomyPictureOfTheDayLoaded,
+    TResult Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
+        astronomyPictureOfTheDayListLoaded,
     TResult Function(List<EpicImageMetadata> images)? epicImagesLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -821,6 +1067,8 @@ class _$AstronomyPictureOfTheDayLoadedImpl
     required TResult Function(_Loading value) loading,
     required TResult Function(_AstronomyPictureOfTheDayLoaded value)
         astronomyPictureOfTheDayLoaded,
+    required TResult Function(_AstronomyPictureOfTheDayListLoaded value)
+        astronomyPictureOfTheDayListLoaded,
     required TResult Function(_EpicImagesLoaded value) epicImagesLoaded,
     required TResult Function(_Error value) error,
   }) {
@@ -834,6 +1082,8 @@ class _$AstronomyPictureOfTheDayLoadedImpl
     TResult? Function(_Loading value)? loading,
     TResult? Function(_AstronomyPictureOfTheDayLoaded value)?
         astronomyPictureOfTheDayLoaded,
+    TResult? Function(_AstronomyPictureOfTheDayListLoaded value)?
+        astronomyPictureOfTheDayListLoaded,
     TResult? Function(_EpicImagesLoaded value)? epicImagesLoaded,
     TResult? Function(_Error value)? error,
   }) {
@@ -847,6 +1097,8 @@ class _$AstronomyPictureOfTheDayLoadedImpl
     TResult Function(_Loading value)? loading,
     TResult Function(_AstronomyPictureOfTheDayLoaded value)?
         astronomyPictureOfTheDayLoaded,
+    TResult Function(_AstronomyPictureOfTheDayListLoaded value)?
+        astronomyPictureOfTheDayListLoaded,
     TResult Function(_EpicImagesLoaded value)? epicImagesLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -870,6 +1122,209 @@ abstract class _AstronomyPictureOfTheDayLoaded implements HomeState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AstronomyPictureOfTheDayLoadedImplCopyWith<
           _$AstronomyPictureOfTheDayLoadedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AstronomyPictureOfTheDayListLoadedImplCopyWith<$Res> {
+  factory _$$AstronomyPictureOfTheDayListLoadedImplCopyWith(
+          _$AstronomyPictureOfTheDayListLoadedImpl value,
+          $Res Function(_$AstronomyPictureOfTheDayListLoadedImpl) then) =
+      __$$AstronomyPictureOfTheDayListLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList});
+}
+
+/// @nodoc
+class __$$AstronomyPictureOfTheDayListLoadedImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res,
+        _$AstronomyPictureOfTheDayListLoadedImpl>
+    implements _$$AstronomyPictureOfTheDayListLoadedImplCopyWith<$Res> {
+  __$$AstronomyPictureOfTheDayListLoadedImplCopyWithImpl(
+      _$AstronomyPictureOfTheDayListLoadedImpl _value,
+      $Res Function(_$AstronomyPictureOfTheDayListLoadedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? astronomyPictureOfTheDayList = null,
+  }) {
+    return _then(_$AstronomyPictureOfTheDayListLoadedImpl(
+      astronomyPictureOfTheDayList: null == astronomyPictureOfTheDayList
+          ? _value._astronomyPictureOfTheDayList
+          : astronomyPictureOfTheDayList // ignore: cast_nullable_to_non_nullable
+              as List<AstronomyPictureOfTheDayModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AstronomyPictureOfTheDayListLoadedImpl
+    implements _AstronomyPictureOfTheDayListLoaded {
+  const _$AstronomyPictureOfTheDayListLoadedImpl(
+      {required final List<AstronomyPictureOfTheDayModel>
+          astronomyPictureOfTheDayList})
+      : _astronomyPictureOfTheDayList = astronomyPictureOfTheDayList;
+
+  final List<AstronomyPictureOfTheDayModel> _astronomyPictureOfTheDayList;
+  @override
+  List<AstronomyPictureOfTheDayModel> get astronomyPictureOfTheDayList {
+    if (_astronomyPictureOfTheDayList is EqualUnmodifiableListView)
+      return _astronomyPictureOfTheDayList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_astronomyPictureOfTheDayList);
+  }
+
+  @override
+  String toString() {
+    return 'HomeState.astronomyPictureOfTheDayListLoaded(astronomyPictureOfTheDayList: $astronomyPictureOfTheDayList)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AstronomyPictureOfTheDayListLoadedImpl &&
+            const DeepCollectionEquality().equals(
+                other._astronomyPictureOfTheDayList,
+                _astronomyPictureOfTheDayList));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_astronomyPictureOfTheDayList));
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AstronomyPictureOfTheDayListLoadedImplCopyWith<
+          _$AstronomyPictureOfTheDayListLoadedImpl>
+      get copyWith => __$$AstronomyPictureOfTheDayListLoadedImplCopyWithImpl<
+          _$AstronomyPictureOfTheDayListLoadedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(
+            AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)
+        astronomyPictureOfTheDayLoaded,
+    required TResult Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)
+        astronomyPictureOfTheDayListLoaded,
+    required TResult Function(List<EpicImageMetadata> images) epicImagesLoaded,
+    required TResult Function(String message) error,
+  }) {
+    return astronomyPictureOfTheDayListLoaded(astronomyPictureOfTheDayList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)?
+        astronomyPictureOfTheDayLoaded,
+    TResult? Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
+        astronomyPictureOfTheDayListLoaded,
+    TResult? Function(List<EpicImageMetadata> images)? epicImagesLoaded,
+    TResult? Function(String message)? error,
+  }) {
+    return astronomyPictureOfTheDayListLoaded
+        ?.call(astronomyPictureOfTheDayList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)?
+        astronomyPictureOfTheDayLoaded,
+    TResult Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
+        astronomyPictureOfTheDayListLoaded,
+    TResult Function(List<EpicImageMetadata> images)? epicImagesLoaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (astronomyPictureOfTheDayListLoaded != null) {
+      return astronomyPictureOfTheDayListLoaded(astronomyPictureOfTheDayList);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_AstronomyPictureOfTheDayLoaded value)
+        astronomyPictureOfTheDayLoaded,
+    required TResult Function(_AstronomyPictureOfTheDayListLoaded value)
+        astronomyPictureOfTheDayListLoaded,
+    required TResult Function(_EpicImagesLoaded value) epicImagesLoaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return astronomyPictureOfTheDayListLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_AstronomyPictureOfTheDayLoaded value)?
+        astronomyPictureOfTheDayLoaded,
+    TResult? Function(_AstronomyPictureOfTheDayListLoaded value)?
+        astronomyPictureOfTheDayListLoaded,
+    TResult? Function(_EpicImagesLoaded value)? epicImagesLoaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return astronomyPictureOfTheDayListLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_AstronomyPictureOfTheDayLoaded value)?
+        astronomyPictureOfTheDayLoaded,
+    TResult Function(_AstronomyPictureOfTheDayListLoaded value)?
+        astronomyPictureOfTheDayListLoaded,
+    TResult Function(_EpicImagesLoaded value)? epicImagesLoaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (astronomyPictureOfTheDayListLoaded != null) {
+      return astronomyPictureOfTheDayListLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AstronomyPictureOfTheDayListLoaded implements HomeState {
+  const factory _AstronomyPictureOfTheDayListLoaded(
+          {required final List<AstronomyPictureOfTheDayModel>
+              astronomyPictureOfTheDayList}) =
+      _$AstronomyPictureOfTheDayListLoadedImpl;
+
+  List<AstronomyPictureOfTheDayModel> get astronomyPictureOfTheDayList;
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AstronomyPictureOfTheDayListLoadedImplCopyWith<
+          _$AstronomyPictureOfTheDayListLoadedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -954,6 +1409,9 @@ class _$EpicImagesLoadedImpl implements _EpicImagesLoaded {
     required TResult Function(
             AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)
         astronomyPictureOfTheDayLoaded,
+    required TResult Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)
+        astronomyPictureOfTheDayListLoaded,
     required TResult Function(List<EpicImageMetadata> images) epicImagesLoaded,
     required TResult Function(String message) error,
   }) {
@@ -967,6 +1425,9 @@ class _$EpicImagesLoadedImpl implements _EpicImagesLoaded {
     TResult? Function()? loading,
     TResult? Function(AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)?
         astronomyPictureOfTheDayLoaded,
+    TResult? Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
+        astronomyPictureOfTheDayListLoaded,
     TResult? Function(List<EpicImageMetadata> images)? epicImagesLoaded,
     TResult? Function(String message)? error,
   }) {
@@ -980,6 +1441,9 @@ class _$EpicImagesLoadedImpl implements _EpicImagesLoaded {
     TResult Function()? loading,
     TResult Function(AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)?
         astronomyPictureOfTheDayLoaded,
+    TResult Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
+        astronomyPictureOfTheDayListLoaded,
     TResult Function(List<EpicImageMetadata> images)? epicImagesLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -997,6 +1461,8 @@ class _$EpicImagesLoadedImpl implements _EpicImagesLoaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_AstronomyPictureOfTheDayLoaded value)
         astronomyPictureOfTheDayLoaded,
+    required TResult Function(_AstronomyPictureOfTheDayListLoaded value)
+        astronomyPictureOfTheDayListLoaded,
     required TResult Function(_EpicImagesLoaded value) epicImagesLoaded,
     required TResult Function(_Error value) error,
   }) {
@@ -1010,6 +1476,8 @@ class _$EpicImagesLoadedImpl implements _EpicImagesLoaded {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_AstronomyPictureOfTheDayLoaded value)?
         astronomyPictureOfTheDayLoaded,
+    TResult? Function(_AstronomyPictureOfTheDayListLoaded value)?
+        astronomyPictureOfTheDayListLoaded,
     TResult? Function(_EpicImagesLoaded value)? epicImagesLoaded,
     TResult? Function(_Error value)? error,
   }) {
@@ -1023,6 +1491,8 @@ class _$EpicImagesLoadedImpl implements _EpicImagesLoaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_AstronomyPictureOfTheDayLoaded value)?
         astronomyPictureOfTheDayLoaded,
+    TResult Function(_AstronomyPictureOfTheDayListLoaded value)?
+        astronomyPictureOfTheDayListLoaded,
     TResult Function(_EpicImagesLoaded value)? epicImagesLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -1120,6 +1590,9 @@ class _$ErrorImpl implements _Error {
     required TResult Function(
             AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)
         astronomyPictureOfTheDayLoaded,
+    required TResult Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)
+        astronomyPictureOfTheDayListLoaded,
     required TResult Function(List<EpicImageMetadata> images) epicImagesLoaded,
     required TResult Function(String message) error,
   }) {
@@ -1133,6 +1606,9 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? loading,
     TResult? Function(AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)?
         astronomyPictureOfTheDayLoaded,
+    TResult? Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
+        astronomyPictureOfTheDayListLoaded,
     TResult? Function(List<EpicImageMetadata> images)? epicImagesLoaded,
     TResult? Function(String message)? error,
   }) {
@@ -1146,6 +1622,9 @@ class _$ErrorImpl implements _Error {
     TResult Function()? loading,
     TResult Function(AstronomyPictureOfTheDayModel astronomyPictureOfTheDay)?
         astronomyPictureOfTheDayLoaded,
+    TResult Function(
+            List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
+        astronomyPictureOfTheDayListLoaded,
     TResult Function(List<EpicImageMetadata> images)? epicImagesLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -1163,6 +1642,8 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_AstronomyPictureOfTheDayLoaded value)
         astronomyPictureOfTheDayLoaded,
+    required TResult Function(_AstronomyPictureOfTheDayListLoaded value)
+        astronomyPictureOfTheDayListLoaded,
     required TResult Function(_EpicImagesLoaded value) epicImagesLoaded,
     required TResult Function(_Error value) error,
   }) {
@@ -1176,6 +1657,8 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_AstronomyPictureOfTheDayLoaded value)?
         astronomyPictureOfTheDayLoaded,
+    TResult? Function(_AstronomyPictureOfTheDayListLoaded value)?
+        astronomyPictureOfTheDayListLoaded,
     TResult? Function(_EpicImagesLoaded value)? epicImagesLoaded,
     TResult? Function(_Error value)? error,
   }) {
@@ -1189,6 +1672,8 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_AstronomyPictureOfTheDayLoaded value)?
         astronomyPictureOfTheDayLoaded,
+    TResult Function(_AstronomyPictureOfTheDayListLoaded value)?
+        astronomyPictureOfTheDayListLoaded,
     TResult Function(_EpicImagesLoaded value)? epicImagesLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),

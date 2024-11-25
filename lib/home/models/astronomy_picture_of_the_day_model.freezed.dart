@@ -21,13 +21,13 @@ AstronomyPictureOfTheDayModel _$AstronomyPictureOfTheDayModelFromJson(
 
 /// @nodoc
 mixin _$AstronomyPictureOfTheDayModel {
-  String get copyright => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
-  String get hdurl => throw _privateConstructorUsedError;
   String get media_type => throw _privateConstructorUsedError;
-  String get service_version => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
+  String? get hdurl => throw _privateConstructorUsedError;
+  String? get explanation => throw _privateConstructorUsedError;
+  String? get copyright => throw _privateConstructorUsedError;
 
   /// Serializes this AstronomyPictureOfTheDayModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,13 +48,13 @@ abstract class $AstronomyPictureOfTheDayModelCopyWith<$Res> {
           AstronomyPictureOfTheDayModel>;
   @useResult
   $Res call(
-      {String copyright,
-      DateTime date,
-      String hdurl,
+      {DateTime date,
       String media_type,
-      String service_version,
       String title,
-      String url});
+      String url,
+      String? hdurl,
+      String? explanation,
+      String? copyright});
 }
 
 /// @nodoc
@@ -73,34 +73,22 @@ class _$AstronomyPictureOfTheDayModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? copyright = null,
     Object? date = null,
-    Object? hdurl = null,
     Object? media_type = null,
-    Object? service_version = null,
     Object? title = null,
     Object? url = null,
+    Object? hdurl = freezed,
+    Object? explanation = freezed,
+    Object? copyright = freezed,
   }) {
     return _then(_value.copyWith(
-      copyright: null == copyright
-          ? _value.copyright
-          : copyright // ignore: cast_nullable_to_non_nullable
-              as String,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      hdurl: null == hdurl
-          ? _value.hdurl
-          : hdurl // ignore: cast_nullable_to_non_nullable
-              as String,
       media_type: null == media_type
           ? _value.media_type
           : media_type // ignore: cast_nullable_to_non_nullable
-              as String,
-      service_version: null == service_version
-          ? _value.service_version
-          : service_version // ignore: cast_nullable_to_non_nullable
               as String,
       title: null == title
           ? _value.title
@@ -110,6 +98,18 @@ class _$AstronomyPictureOfTheDayModelCopyWithImpl<$Res,
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      hdurl: freezed == hdurl
+          ? _value.hdurl
+          : hdurl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      explanation: freezed == explanation
+          ? _value.explanation
+          : explanation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      copyright: freezed == copyright
+          ? _value.copyright
+          : copyright // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -124,13 +124,13 @@ abstract class _$$AstronomyPictureOfTheDayModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String copyright,
-      DateTime date,
-      String hdurl,
+      {DateTime date,
       String media_type,
-      String service_version,
       String title,
-      String url});
+      String url,
+      String? hdurl,
+      String? explanation,
+      String? copyright});
 }
 
 /// @nodoc
@@ -148,34 +148,22 @@ class __$$AstronomyPictureOfTheDayModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? copyright = null,
     Object? date = null,
-    Object? hdurl = null,
     Object? media_type = null,
-    Object? service_version = null,
     Object? title = null,
     Object? url = null,
+    Object? hdurl = freezed,
+    Object? explanation = freezed,
+    Object? copyright = freezed,
   }) {
     return _then(_$AstronomyPictureOfTheDayModelImpl(
-      copyright: null == copyright
-          ? _value.copyright
-          : copyright // ignore: cast_nullable_to_non_nullable
-              as String,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      hdurl: null == hdurl
-          ? _value.hdurl
-          : hdurl // ignore: cast_nullable_to_non_nullable
-              as String,
       media_type: null == media_type
           ? _value.media_type
           : media_type // ignore: cast_nullable_to_non_nullable
-              as String,
-      service_version: null == service_version
-          ? _value.service_version
-          : service_version // ignore: cast_nullable_to_non_nullable
               as String,
       title: null == title
           ? _value.title
@@ -185,6 +173,18 @@ class __$$AstronomyPictureOfTheDayModelImplCopyWithImpl<$Res>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      hdurl: freezed == hdurl
+          ? _value.hdurl
+          : hdurl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      explanation: freezed == explanation
+          ? _value.explanation
+          : explanation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      copyright: freezed == copyright
+          ? _value.copyright
+          : copyright // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -194,36 +194,36 @@ class __$$AstronomyPictureOfTheDayModelImplCopyWithImpl<$Res>
 class _$AstronomyPictureOfTheDayModelImpl
     implements _AstronomyPictureOfTheDayModel {
   const _$AstronomyPictureOfTheDayModelImpl(
-      {required this.copyright,
-      required this.date,
-      required this.hdurl,
+      {required this.date,
       required this.media_type,
-      required this.service_version,
       required this.title,
-      required this.url});
+      required this.url,
+      this.hdurl,
+      this.explanation,
+      this.copyright});
 
   factory _$AstronomyPictureOfTheDayModelImpl.fromJson(
           Map<String, dynamic> json) =>
       _$$AstronomyPictureOfTheDayModelImplFromJson(json);
 
   @override
-  final String copyright;
-  @override
   final DateTime date;
   @override
-  final String hdurl;
-  @override
   final String media_type;
-  @override
-  final String service_version;
   @override
   final String title;
   @override
   final String url;
+  @override
+  final String? hdurl;
+  @override
+  final String? explanation;
+  @override
+  final String? copyright;
 
   @override
   String toString() {
-    return 'AstronomyPictureOfTheDayModel(copyright: $copyright, date: $date, hdurl: $hdurl, media_type: $media_type, service_version: $service_version, title: $title, url: $url)';
+    return 'AstronomyPictureOfTheDayModel(date: $date, media_type: $media_type, title: $title, url: $url, hdurl: $hdurl, explanation: $explanation, copyright: $copyright)';
   }
 
   @override
@@ -231,22 +231,22 @@ class _$AstronomyPictureOfTheDayModelImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AstronomyPictureOfTheDayModelImpl &&
-            (identical(other.copyright, copyright) ||
-                other.copyright == copyright) &&
             (identical(other.date, date) || other.date == date) &&
-            (identical(other.hdurl, hdurl) || other.hdurl == hdurl) &&
             (identical(other.media_type, media_type) ||
                 other.media_type == media_type) &&
-            (identical(other.service_version, service_version) ||
-                other.service_version == service_version) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.url, url) || other.url == url));
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.hdurl, hdurl) || other.hdurl == hdurl) &&
+            (identical(other.explanation, explanation) ||
+                other.explanation == explanation) &&
+            (identical(other.copyright, copyright) ||
+                other.copyright == copyright));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, copyright, date, hdurl,
-      media_type, service_version, title, url);
+  int get hashCode => Object.hash(
+      runtimeType, date, media_type, title, url, hdurl, explanation, copyright);
 
   /// Create a copy of AstronomyPictureOfTheDayModel
   /// with the given fields replaced by the non-null parameter values.
@@ -269,31 +269,31 @@ class _$AstronomyPictureOfTheDayModelImpl
 abstract class _AstronomyPictureOfTheDayModel
     implements AstronomyPictureOfTheDayModel {
   const factory _AstronomyPictureOfTheDayModel(
-      {required final String copyright,
-      required final DateTime date,
-      required final String hdurl,
+      {required final DateTime date,
       required final String media_type,
-      required final String service_version,
       required final String title,
-      required final String url}) = _$AstronomyPictureOfTheDayModelImpl;
+      required final String url,
+      final String? hdurl,
+      final String? explanation,
+      final String? copyright}) = _$AstronomyPictureOfTheDayModelImpl;
 
   factory _AstronomyPictureOfTheDayModel.fromJson(Map<String, dynamic> json) =
       _$AstronomyPictureOfTheDayModelImpl.fromJson;
 
   @override
-  String get copyright;
-  @override
   DateTime get date;
   @override
-  String get hdurl;
-  @override
   String get media_type;
-  @override
-  String get service_version;
   @override
   String get title;
   @override
   String get url;
+  @override
+  String? get hdurl;
+  @override
+  String? get explanation;
+  @override
+  String? get copyright;
 
   /// Create a copy of AstronomyPictureOfTheDayModel
   /// with the given fields replaced by the non-null parameter values.
