@@ -12,7 +12,7 @@ _$AstronomyPictureOfTheDayModelImpl
           date: DateTime.parse(json['date'] as String),
           media_type: json['media_type'] as String,
           title: json['title'] as String,
-          url: json['url'] as String,
+          url: json['url'] as String?,
           hdurl: json['hdurl'] as String?,
           explanation: json['explanation'] as String?,
           copyright: json['copyright'] as String?,

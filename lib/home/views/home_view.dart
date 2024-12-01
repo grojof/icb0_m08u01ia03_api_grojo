@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:icb0_m08u01ia03_api_grojo/home/bloc/home_bloc.dart';
+import 'package:icb0_m08u01ia03_api_grojo/home/models/apod_media_type.dart';
+import 'package:icb0_m08u01ia03_api_grojo/home/models/astronomy_picture_of_the_day_model.dart';
 import 'package:icb0_m08u01ia03_api_grojo/home/services/api_nasa_service.dart';
 import 'package:intl/intl.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -99,35 +102,9 @@ class _HomeViewState extends State<HomeView> {
                     child: CircularProgressIndicator(),
                   ),
                   astronomyPictureOfTheDayListLoaded: (state) =>
-                      GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 8,
-                      mainAxisSpacing: 8,
-                    ),
-                    itemCount: state.astronomyPictureOfTheDayList.length,
-                    itemBuilder: (context, index) {
-                      final image = state.astronomyPictureOfTheDayList[index];
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute<void>(
-                              builder: (_) => _ImagePage(
-                                imageUrl: image.url,
-                                title: image.title,
-                              ),
-                            ),
-                          );
-                        },
-                        child: Image.network(
-                          image.url,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) =>
-                              const Icon(Icons.error),
-                        ),
-                      );
-                    },
+                      _buildGridImages(
+                    astronomyPictureOfTheDayList:
+                        state.astronomyPictureOfTheDayList,
                   ),
                   error: (state) => Center(
                     child: Text(state.message),
@@ -142,6 +119,87 @@ class _HomeViewState extends State<HomeView> {
           ),
         ],
       ),
+    );
+  }
+
+  GridView _buildGridImages({
+    required List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList,
+  }) {
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 4,
+      ),
+      itemCount: astronomyPictureOfTheDayList.length,
+      itemBuilder: (context, index) {
+        final image = astronomyPictureOfTheDayList[index];
+        return GestureDetector(
+          onTap: () {
+            if (image.media_type == ApodMediaType.image.name &&
+                image.url != null) {
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => _ImagePage(
+                    imageUrl: image.url!,
+                    title: image.title,
+                  ),
+                ),
+              );
+            } else if (image.media_type == ApodMediaType.video.name &&
+                image.url != null) {
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => VideoPage(
+                    videoUrl: image.url!,
+                    title: image.title,
+                  ),
+                ),
+              );
+            }
+          },
+          child: Stack(
+            children: [
+              if (image.url != null) ...[
+                if (image.media_type == ApodMediaType.image.name) ...[
+                  Image.network(
+                    image.url!,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    height: double.infinity,
+                    errorBuilder: (context, error, stackTrace) =>
+                        const Icon(Icons.error),
+                  ),
+                ] else if (image.media_type == ApodMediaType.video.name) ...[
+                  Image.network(
+                    image.url!,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    height: double.infinity,
+                    errorBuilder: (context, error, stackTrace) =>
+                        const Icon(Icons.error),
+                  ),
+                  const Icon(Icons.play_arrow, color: Colors.white),
+                ],
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(8)),
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                    child: Text(
+                      softWrap: true,
+                      '${image.title} ${image.copyright != null ? ''
+                          ' by ${image.copyright}' : ''}',
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ],
+          ),
+        );
+      },
     );
   }
 }
@@ -164,6 +222,60 @@ class _ImagePage extends StatelessWidget {
           imageUrl,
           fit: BoxFit.contain,
           errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
+        ),
+      ),
+    );
+  }
+}
+
+class VideoPage extends StatefulWidget {
+  const VideoPage({
+    required this.videoUrl,
+    required this.title,
+    super.key,
+  });
+
+  final String videoUrl;
+  final String title;
+
+  @override
+  State<VideoPage> createState() => _VideoPageState();
+}
+
+class _VideoPageState extends State<VideoPage> {
+  late YoutubePlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId(widget.videoUrl)!,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.title)),
+      body: Center(
+        child: YoutubePlayer(
+          controller: _controller,
+          showVideoProgressIndicator: true,
+          progressIndicatorColor: Colors.red,
+          onReady: () {
+            // Opcional: realiza acciones cuando el video esté listo
+            debugPrint('YouTube Player is ready.');
+          },
+          onEnded: (data) {
+            // Opcional: realiza acciones cuando el video termine
+            debugPrint('Video has ended.');
+          },
         ),
       ),
     );

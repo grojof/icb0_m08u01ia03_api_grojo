@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:icb0_m08u01ia03_api_grojo/home/models/models.dart';
 
 part 'astronomy_picture_of_the_day_model.freezed.dart';
 part 'astronomy_picture_of_the_day_model.g.dart';
@@ -9,7 +10,7 @@ class AstronomyPictureOfTheDayModel with _$AstronomyPictureOfTheDayModel {
     required DateTime date,
     required String media_type,
     required String title,
-    required String url,
+    String? url,
     String? hdurl,
     String? explanation,
     String? copyright,

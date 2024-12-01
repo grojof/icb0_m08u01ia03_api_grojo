@@ -24,7 +24,7 @@ mixin _$AstronomyPictureOfTheDayModel {
   DateTime get date => throw _privateConstructorUsedError;
   String get media_type => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
   String? get hdurl => throw _privateConstructorUsedError;
   String? get explanation => throw _privateConstructorUsedError;
   String? get copyright => throw _privateConstructorUsedError;
@@ -51,7 +51,7 @@ abstract class $AstronomyPictureOfTheDayModelCopyWith<$Res> {
       {DateTime date,
       String media_type,
       String title,
-      String url,
+      String? url,
       String? hdurl,
       String? explanation,
       String? copyright});
@@ -76,7 +76,7 @@ class _$AstronomyPictureOfTheDayModelCopyWithImpl<$Res,
     Object? date = null,
     Object? media_type = null,
     Object? title = null,
-    Object? url = null,
+    Object? url = freezed,
     Object? hdurl = freezed,
     Object? explanation = freezed,
     Object? copyright = freezed,
@@ -94,10 +94,10 @@ class _$AstronomyPictureOfTheDayModelCopyWithImpl<$Res,
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      url: null == url
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       hdurl: freezed == hdurl
           ? _value.hdurl
           : hdurl // ignore: cast_nullable_to_non_nullable
@@ -127,7 +127,7 @@ abstract class _$$AstronomyPictureOfTheDayModelImplCopyWith<$Res>
       {DateTime date,
       String media_type,
       String title,
-      String url,
+      String? url,
       String? hdurl,
       String? explanation,
       String? copyright});
@@ -151,7 +151,7 @@ class __$$AstronomyPictureOfTheDayModelImplCopyWithImpl<$Res>
     Object? date = null,
     Object? media_type = null,
     Object? title = null,
-    Object? url = null,
+    Object? url = freezed,
     Object? hdurl = freezed,
     Object? explanation = freezed,
     Object? copyright = freezed,
@@ -169,10 +169,10 @@ class __$$AstronomyPictureOfTheDayModelImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      url: null == url
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       hdurl: freezed == hdurl
           ? _value.hdurl
           : hdurl // ignore: cast_nullable_to_non_nullable
@@ -197,7 +197,7 @@ class _$AstronomyPictureOfTheDayModelImpl
       {required this.date,
       required this.media_type,
       required this.title,
-      required this.url,
+      this.url,
       this.hdurl,
       this.explanation,
       this.copyright});
@@ -213,7 +213,7 @@ class _$AstronomyPictureOfTheDayModelImpl
   @override
   final String title;
   @override
-  final String url;
+  final String? url;
   @override
   final String? hdurl;
   @override
@@ -272,7 +272,7 @@ abstract class _AstronomyPictureOfTheDayModel
       {required final DateTime date,
       required final String media_type,
       required final String title,
-      required final String url,
+      final String? url,
       final String? hdurl,
       final String? explanation,
       final String? copyright}) = _$AstronomyPictureOfTheDayModelImpl;
@@ -287,7 +287,7 @@ abstract class _AstronomyPictureOfTheDayModel
   @override
   String get title;
   @override
-  String get url;
+  String? get url;
   @override
   String? get hdurl;
   @override
