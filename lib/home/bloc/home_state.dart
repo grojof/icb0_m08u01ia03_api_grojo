@@ -14,10 +14,6 @@ class HomeState with _$HomeState {
     required List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList,
   }) = _AstronomyPictureOfTheDayListLoaded;
 
-  const factory HomeState.epicImagesLoaded({
-    required List<EpicImageMetadata> images,
-  }) = _EpicImagesLoaded;
-
   const factory HomeState.error({
     required String message,
   }) = _Error;

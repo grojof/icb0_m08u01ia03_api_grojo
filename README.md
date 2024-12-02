@@ -179,3 +179,4 @@ Alternatively, run `flutter run` and code generation will take place automatical
 # Custom documentation
 Install nuget with powerShell
 winget install Microsoft.NuGet
+choco install nuget.commandline

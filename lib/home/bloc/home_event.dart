@@ -8,9 +8,4 @@ class HomeEvent with _$HomeEvent {
     required DateTime startDate,
     required DateTime endDate,
   }) = _FetchApodByDateRange;
-
-  const factory HomeEvent.fetchEpicImages({
-    required DateTime startDate,
-    required DateTime endDate,
-  }) = _FetchEpicImages;
 }
