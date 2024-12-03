@@ -9,7 +9,6 @@ import 'package:icb0_m08u01ia03_api_grojo/home/models/apod_media_type.dart';
 import 'package:icb0_m08u01ia03_api_grojo/home/models/astronomy_picture_of_the_day_model.dart';
 import 'package:icb0_m08u01ia03_api_grojo/home/views/views.dart';
 import 'package:intl/intl.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -23,8 +22,12 @@ class Home extends StatelessWidget {
       create: (context) => HomeBloc()
         ..add(
           HomeEvent.fetchApodByDateRange(
-            startDate: DateTime.now().subtract(const Duration(days: 13)),
-            endDate: DateTime.now(),
+            dateRange: DateTimeRange(
+              start: DateTime.now().subtract(
+                const Duration(days: kDaysOfImagesToDisplay),
+              ),
+              end: DateTime.now(),
+            ),
           ),
         ),
       child: const HomeView(),
@@ -32,43 +35,43 @@ class Home extends StatelessWidget {
   }
 }
 
-class HomeView extends StatefulWidget {
+class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
-  @override
-  State<HomeView> createState() => _HomeViewState();
-}
+  void _updateDateRange(
+    BuildContext context, {
+    DateTimeRange? currentRange,
+    int? days,
+    DateTimeRange? newFormDateTimeRange,
+  }) {
+    DateTimeRange newDateTimeRange;
 
-class _HomeViewState extends State<HomeView> {
-  final _formKey = GlobalKey<FormBuilderState>();
+    // Set new range using days or newFormDateTimeRange
+    if (currentRange != null && days != null) {
+      newDateTimeRange = DateTimeRange(
+        start: currentRange.start.add(Duration(days: days)),
+        end: currentRange.end.add(Duration(days: days)),
+      );
+    } else if (newFormDateTimeRange != null) {
+      newDateTimeRange = newFormDateTimeRange;
+    } else {
+      return;
+    }
 
-  DateTimeRange _currentRange = DateTimeRange(
-    start: DateTime.now().subtract(const Duration(days: 13)),
-    end: DateTime.now(),
-  );
-
-  void _updateDateRange(BuildContext context, int days) {
-    final newStart = _currentRange.start.add(Duration(days: days));
-    final newEnd = _currentRange.end.add(Duration(days: days));
-
-    setState(() {
-      _currentRange = DateTimeRange(start: newStart, end: newEnd);
-    });
-
-    // Actualiza el valor en el FormBuilder
-    _formKey.currentState?.fields['dateRange']?.didChange(_currentRange);
-
-    // Llama al Bloc para obtener datos del nuevo rango
+    // Update list of images
     context.read<HomeBloc>().add(
           HomeEvent.fetchApodByDateRange(
-            startDate: newStart,
-            endDate: newEnd,
+            dateRange: newDateTimeRange,
           ),
         );
   }
 
   @override
   Widget build(BuildContext context) {
+    return _buildScaffold(context);
+  }
+
+  Scaffold _buildScaffold(BuildContext context) {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -81,74 +84,92 @@ class _HomeViewState extends State<HomeView> {
             expandedHeight: 100,
             flexibleSpace: FlexibleSpaceBar(
               collapseMode: CollapseMode.pin,
-              background: BlocListener<HomeBloc, HomeState>(
-                listener: (context, state) {
-                  state.maybeMap(
-                    astronomyPictureOfTheDayListLoaded: (state) {
-                      setState(() {
-                        _currentRange = DateTimeRange(
-                          start: state.astronomyPictureOfTheDayList.first.date,
-                          end: state.astronomyPictureOfTheDayList.last.date,
-                        );
-                      });
+              background: Padding(
+                padding: const EdgeInsets.only(
+                  left: 10,
+                  right: 10,
+                  top: 70,
+                ),
+                child: BlocBuilder<HomeBloc, HomeState>(
+                  builder: (context, state) {
+                    final currentRange = state.maybeMap(
+                      orElse: () => DateTimeRange(
+                        start: DateTime.now().subtract(
+                          const Duration(days: kDaysOfImagesToDisplay),
+                        ),
+                        end: DateTime.now(),
+                      ),
+                      initial: (state) => state.currentRange,
+                      loading: (state) => state.currentRange,
+                      astronomyPictureOfTheDayListLoaded: (state) =>
+                          state.currentRange,
+                      error: (state) => state.currentRange,
+                    );
 
-                      // Sincroniza el rango actualizado con el FormBuilder
-                      _formKey.currentState?.fields['dateRange']
-                          ?.didChange(_currentRange);
-                    },
-                    orElse: () {},
-                  );
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 10,
-                    right: 10,
-                    top: 70,
-                  ),
-                  child: FormBuilder(
-                    key: _formKey,
-                    child: Row(
-                      children: [
-                        FloatingActionButton.small(
-                          heroTag: 'back',
-                          onPressed: _currentRange.start.isAfter(
-                            DateTime(1995, 6, 16).add(const Duration(days: 14)),
-                          )
-                              ? () => _updateDateRange(context, -14)
-                              : null,
-                          child: const Icon(Icons.arrow_back_ios_sharp),
-                        ),
-                        Expanded(
-                          child: FormBuilderDateRangePicker(
-                            name: 'dateRange',
-                            initialValue: _currentRange,
-                            firstDate: DateTime(1995, 6, 16),
-                            lastDate: DateTime.now(),
-                            format: DateFormat('dd/MM/yyyy'),
-                            decoration: const InputDecoration(
-                              isDense: true,
-                              contentPadding: EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 8,
+                    return FormBuilder(
+                      key: GlobalKey<FormBuilderState>(),
+                      child: Row(
+                        children: [
+                          FloatingActionButton.small(
+                            heroTag: 'back',
+                            onPressed: currentRange.start.isAfter(
+                              DateTime(1995, 6, 16).add(
+                                const Duration(days: kDaysOfImagesToDisplay),
                               ),
+                            )
+                                ? () => _updateDateRange(
+                                      context,
+                                      currentRange: currentRange,
+                                      days: -kDaysOfImagesToDisplay,
+                                    )
+                                : null,
+                            child: const Icon(Icons.arrow_back_ios_sharp),
+                          ),
+                          Expanded(
+                            child: FormBuilderDateRangePicker(
+                              key: ValueKey(currentRange),
+                              name: 'dateRange',
+                              initialValue: currentRange,
+                              firstDate: DateTime(1995, 6, 16),
+                              lastDate: DateTime.now(),
+                              format: DateFormat('dd/MM/yyyy'),
+                              decoration: const InputDecoration(
+                                isDense: true,
+                                contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                  vertical: 8,
+                                ),
+                              ),
+                              style: Theme.of(context).textTheme.labelLarge,
+                              textAlign: TextAlign.center,
+                              onChanged: (newDateTimeRange) {
+                                if (newDateTimeRange != null) {
+                                  _updateDateRange(
+                                    context,
+                                    newFormDateTimeRange: newDateTimeRange,
+                                  );
+                                }
+                              },
                             ),
-                            style: Theme.of(context).textTheme.labelLarge,
-                            textAlign: TextAlign.center,
                           ),
-                        ),
-                        FloatingActionButton.small(
-                          heroTag: 'forward',
-                          onPressed: _currentRange.end.isBefore(DateTime.now())
-                              ? () => _updateDateRange(context, 14)
-                              : null,
-                          child: const RotatedBox(
-                            quarterTurns: 2,
-                            child: Icon(Icons.arrow_back_ios_sharp),
+                          FloatingActionButton.small(
+                            heroTag: 'forward',
+                            onPressed: currentRange.end.isBefore(DateTime.now())
+                                ? () => _updateDateRange(
+                                      context,
+                                      currentRange: currentRange,
+                                      days: kDaysOfImagesToDisplay,
+                                    )
+                                : null,
+                            child: const RotatedBox(
+                              quarterTurns: 2,
+                              child: Icon(Icons.arrow_back_ios_sharp),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
@@ -171,9 +192,6 @@ class _HomeViewState extends State<HomeView> {
                   child: Center(
                     child: Text(state.message),
                   ),
-                ),
-                astronomyPictureOfTheDayLoaded: (_) => const LoaderWidget(
-                  isSliverToBoxAdapter: true,
                 ),
               );
             },
@@ -371,7 +389,7 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           ),
                         ),
-                      ]
+                      ],
                     ],
                   ),
                 ),

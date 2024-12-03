@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:icb0_m08u01ia03_api_grojo/home/models/models.dart';
 import 'package:intl/intl.dart';
@@ -32,41 +33,18 @@ class ApiNasaService {
     if (response.statusCode == 200) {
       return json.decode(response.body);
     } else {
-      throw Exception('Error al obtener datos de la API');
+      throw Exception('Error al obtenir les dades de la API');
     }
-  }
-
-  /// Get Astronomy Picture of the Day
-  Future<AstronomyPictureOfTheDayModel> getAstronomyPictureOfTheDay({
-    DateTime? date,
-  }) async {
-    // Format date to 'yyyy-MM-dd'
-    final formattedDate =
-        date != null ? DateFormat('yyyy-MM-dd').format(date) : null;
-
-    // Fetch data from the API
-    final response = await fetchData(
-      endpoint: '/planetary/apod',
-      queryParams: {
-        if (formattedDate != null) 'date': formattedDate,
-      },
-    );
-
-    // Parse response to model
-    return AstronomyPictureOfTheDayModel.fromJson(
-      response as Map<String, dynamic>,
-    );
   }
 
   /// Get Astronomy Pictures of the Day for a date range
   Future<List<AstronomyPictureOfTheDayModel>>
       getAstronomyPictureOfTheDayByDateRange({
-    required DateTime startDate,
-    required DateTime endDate,
+    required DateTimeRange dateRange,
   }) async {
     // Format dates to 'yyyy-MM-dd'
-    final formattedStartDate = DateFormat('yyyy-MM-dd').format(startDate);
-    final formattedEndDate = DateFormat('yyyy-MM-dd').format(endDate);
+    final formattedStartDate = DateFormat('yyyy-MM-dd').format(dateRange.start);
+    final formattedEndDate = DateFormat('yyyy-MM-dd').format(dateRange.end);
 
     // Fetch data from the API
     final response = await fetchData(
@@ -88,7 +66,7 @@ class ApiNasaService {
           .toList();
     } else {
       throw Exception(
-        'Error: Expected a list but received ${response.runtimeType}',
+        'Error: La reposta no conté una llista: ${response.runtimeType}',
       );
     }
   }

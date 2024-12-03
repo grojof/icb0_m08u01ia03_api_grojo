@@ -5,7 +5,6 @@ class HomeEvent with _$HomeEvent {
   const factory HomeEvent.started() = _Started;
 
   const factory HomeEvent.fetchApodByDateRange({
-    required DateTime startDate,
-    required DateTime endDate,
+    required DateTimeRange dateRange,
   }) = _FetchApodByDateRange;
 }
