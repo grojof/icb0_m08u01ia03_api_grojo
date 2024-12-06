@@ -79,7 +79,8 @@ class _VideoViewState extends State<VideoView> {
                           padding: const EdgeInsets.all(10),
                           margin: const EdgeInsets.only(bottom: 16),
                           child: Text(
-                            'Autor: ${widget.copyright?.replaceAll('\n', ' ').trim()}',
+                            'Autor: '
+                            '${widget.copyright?.replaceAll('\n', ' ').trim()}',
                             style: Theme.of(context)
                                 .textTheme
                                 .labelSmall

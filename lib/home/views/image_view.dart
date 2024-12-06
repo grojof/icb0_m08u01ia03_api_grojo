@@ -97,7 +97,8 @@ class _ImageViewState extends State<ImageView> {
                     ),
                     padding: const EdgeInsets.all(10),
                     child: Text(
-                      'Autor: ${widget.copyright?.replaceAll('\n', ' ').trim()}',
+                      'Autor: '
+                      '${widget.copyright?.replaceAll('\n', ' ').trim()}',
                       style: Theme.of(context).textTheme.labelSmall?.copyWith(
                             color: AppColors.kOnTertiary,
                             fontWeight: FontWeight.bold,

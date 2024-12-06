@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../theme/theme.dart';
+import 'package:icb0_m08u01ia03_api_grojo/core/theme/theme.dart';
 
 class LoaderWidget extends StatelessWidget {
   const LoaderWidget({

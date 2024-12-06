@@ -5,7 +5,8 @@ class YouTubeUrlUtil {
   /// - youtube.com (both classic and embedded formats)
   /// - youtu.be (shortened format)
   ///
-  /// Returns the URL of the YouTube thumbnail in medium quality (`mqdefault.jpg`),
+  /// Returns the URL of the YouTube thumbnail in medium quality
+  /// (`mqdefault.jpg`),
   /// or `null` if the input is not a valid YouTube video URL.
   static String? getYouTubeThumbnail(String videoUrl) {
     final uri = Uri.tryParse(videoUrl);

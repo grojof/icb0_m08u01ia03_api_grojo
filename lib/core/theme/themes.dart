@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'colors.dart';
-import 'styles.dart';
+import 'package:icb0_m08u01ia03_api_grojo/core/theme/colors.dart';
+import 'package:icb0_m08u01ia03_api_grojo/core/theme/styles.dart';
 
 // Buttons types
 enum ButtonType {
