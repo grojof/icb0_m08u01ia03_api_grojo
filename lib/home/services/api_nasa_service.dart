@@ -39,7 +39,7 @@ class ApiNasaService {
 
   /// Get Astronomy Pictures of the Day for a date range
   Future<List<AstronomyPictureOfTheDayModel>>
-      getAstronomyPictureOfTheDayByDateRange({
+      fetchAstronomyPictureOfTheDayByDateRange({
     required DateTimeRange dateRange,
   }) async {
     // Format dates to 'yyyy-MM-dd'

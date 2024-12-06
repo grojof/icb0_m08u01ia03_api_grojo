@@ -5,10 +5,10 @@ import 'package:icb0_m08u01ia03_api_grojo/home/services/services.dart';
 final apiNasaService = ApiNasaService();
 
 class ApiNasaRepository {
-  Future<List<AstronomyPictureOfTheDayModel>> getApodImagesByDateRange({
+  Future<List<AstronomyPictureOfTheDayModel>> fetchApodImagesByDateRange({
     required DateTimeRange dateRange,
   }) async {
-    return apiNasaService.getAstronomyPictureOfTheDayByDateRange(
+    return apiNasaService.fetchAstronomyPictureOfTheDayByDateRange(
       dateRange: dateRange,
     );
   }

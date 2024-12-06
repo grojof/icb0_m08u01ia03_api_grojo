@@ -11,15 +11,7 @@ part 'home_bloc.freezed.dart';
 const int kDaysOfImagesToDisplay = 14;
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc()
-      : super(_Initial(
-          currentRange: DateTimeRange(
-            start: DateTime.now().subtract(
-              const Duration(days: kDaysOfImagesToDisplay),
-            ),
-            end: DateTime.now(),
-          ),
-        )) {
+  HomeBloc() : super(const _Initial()) {
     on<HomeEvent>((event, emit) async {
       await event.map(
         started: (e) => _onInitialState(e, emit),
@@ -35,8 +27,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     Emitter<HomeState> emit,
   ) async {
     emit(
-      HomeState.initial(
-        currentRange: DateTimeRange(
+      const HomeState.initial(),
+    );
+
+    add(
+      HomeEvent.fetchApodByDateRange(
+        dateRange: DateTimeRange(
           start: DateTime.now().subtract(
             const Duration(days: kDaysOfImagesToDisplay),
           ),
@@ -59,13 +55,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final newRange = event.dateRange;
 
     try {
-      final images = await apiNasaRepository.getApodImagesByDateRange(
+      final apodList = await apiNasaRepository.fetchApodImagesByDateRange(
         dateRange: newRange,
       );
 
       emit(
         HomeState.astronomyPictureOfTheDayListLoaded(
-          astronomyPictureOfTheDayList: images,
+          astronomyPictureOfTheDayList: apodList,
           currentRange: newRange,
         ),
       );

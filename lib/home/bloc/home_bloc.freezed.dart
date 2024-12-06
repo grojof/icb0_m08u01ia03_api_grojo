@@ -327,10 +327,9 @@ abstract class _FetchApodByDateRange implements HomeEvent {
 
 /// @nodoc
 mixin _$HomeState {
-  DateTimeRange get currentRange => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DateTimeRange currentRange) initial,
+    required TResult Function() initial,
     required TResult Function(DateTimeRange currentRange) loading,
     required TResult Function(DateTimeRange currentRange,
             List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)
@@ -340,7 +339,7 @@ mixin _$HomeState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DateTimeRange currentRange)? initial,
+    TResult? Function()? initial,
     TResult? Function(DateTimeRange currentRange)? loading,
     TResult? Function(DateTimeRange currentRange,
             List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
@@ -350,7 +349,7 @@ mixin _$HomeState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DateTimeRange currentRange)? initial,
+    TResult Function()? initial,
     TResult Function(DateTimeRange currentRange)? loading,
     TResult Function(DateTimeRange currentRange,
             List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
@@ -387,20 +386,12 @@ mixin _$HomeState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  /// Create a copy of HomeState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $HomeStateCopyWith<HomeState> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
-  @useResult
-  $Res call({DateTimeRange currentRange});
 }
 
 /// @nodoc
@@ -415,29 +406,13 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? currentRange = null,
-  }) {
-    return _then(_value.copyWith(
-      currentRange: null == currentRange
-          ? _value.currentRange
-          : currentRange // ignore: cast_nullable_to_non_nullable
-              as DateTimeRange,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res>
-    implements $HomeStateCopyWith<$Res> {
+abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
           _$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({DateTimeRange currentRange});
 }
 
 /// @nodoc
@@ -450,83 +425,57 @@ class __$$InitialImplCopyWithImpl<$Res>
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? currentRange = null,
-  }) {
-    return _then(_$InitialImpl(
-      currentRange: null == currentRange
-          ? _value.currentRange
-          : currentRange // ignore: cast_nullable_to_non_nullable
-              as DateTimeRange,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({required this.currentRange});
-
-  @override
-  final DateTimeRange currentRange;
+  const _$InitialImpl();
 
   @override
   String toString() {
-    return 'HomeState.initial(currentRange: $currentRange)';
+    return 'HomeState.initial()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$InitialImpl &&
-            (identical(other.currentRange, currentRange) ||
-                other.currentRange == currentRange));
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, currentRange);
-
-  /// Create a copy of HomeState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DateTimeRange currentRange) initial,
+    required TResult Function() initial,
     required TResult Function(DateTimeRange currentRange) loading,
     required TResult Function(DateTimeRange currentRange,
             List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)
         astronomyPictureOfTheDayListLoaded,
     required TResult Function(DateTimeRange currentRange, String message) error,
   }) {
-    return initial(currentRange);
+    return initial();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DateTimeRange currentRange)? initial,
+    TResult? Function()? initial,
     TResult? Function(DateTimeRange currentRange)? loading,
     TResult? Function(DateTimeRange currentRange,
             List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
         astronomyPictureOfTheDayListLoaded,
     TResult? Function(DateTimeRange currentRange, String message)? error,
   }) {
-    return initial?.call(currentRange);
+    return initial?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DateTimeRange currentRange)? initial,
+    TResult Function()? initial,
     TResult Function(DateTimeRange currentRange)? loading,
     TResult Function(DateTimeRange currentRange,
             List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
@@ -535,7 +484,7 @@ class _$InitialImpl implements _Initial {
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(currentRange);
+      return initial();
     }
     return orElse();
   }
@@ -582,27 +531,14 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements HomeState {
-  const factory _Initial({required final DateTimeRange currentRange}) =
-      _$InitialImpl;
-
-  @override
-  DateTimeRange get currentRange;
-
-  /// Create a copy of HomeState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res>
-    implements $HomeStateCopyWith<$Res> {
+abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
           _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
       __$$LoadingImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({DateTimeRange currentRange});
 }
@@ -667,7 +603,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DateTimeRange currentRange) initial,
+    required TResult Function() initial,
     required TResult Function(DateTimeRange currentRange) loading,
     required TResult Function(DateTimeRange currentRange,
             List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)
@@ -680,7 +616,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DateTimeRange currentRange)? initial,
+    TResult? Function()? initial,
     TResult? Function(DateTimeRange currentRange)? loading,
     TResult? Function(DateTimeRange currentRange,
             List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
@@ -693,7 +629,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DateTimeRange currentRange)? initial,
+    TResult Function()? initial,
     TResult Function(DateTimeRange currentRange)? loading,
     TResult Function(DateTimeRange currentRange,
             List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
@@ -752,25 +688,21 @@ abstract class _Loading implements HomeState {
   const factory _Loading({required final DateTimeRange currentRange}) =
       _$LoadingImpl;
 
-  @override
   DateTimeRange get currentRange;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AstronomyPictureOfTheDayListLoadedImplCopyWith<$Res>
-    implements $HomeStateCopyWith<$Res> {
+abstract class _$$AstronomyPictureOfTheDayListLoadedImplCopyWith<$Res> {
   factory _$$AstronomyPictureOfTheDayListLoadedImplCopyWith(
           _$AstronomyPictureOfTheDayListLoadedImpl value,
           $Res Function(_$AstronomyPictureOfTheDayListLoadedImpl) then) =
       __$$AstronomyPictureOfTheDayListLoadedImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call(
       {DateTimeRange currentRange,
@@ -863,7 +795,7 @@ class _$AstronomyPictureOfTheDayListLoadedImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DateTimeRange currentRange) initial,
+    required TResult Function() initial,
     required TResult Function(DateTimeRange currentRange) loading,
     required TResult Function(DateTimeRange currentRange,
             List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)
@@ -877,7 +809,7 @@ class _$AstronomyPictureOfTheDayListLoadedImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DateTimeRange currentRange)? initial,
+    TResult? Function()? initial,
     TResult? Function(DateTimeRange currentRange)? loading,
     TResult? Function(DateTimeRange currentRange,
             List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
@@ -891,7 +823,7 @@ class _$AstronomyPictureOfTheDayListLoadedImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DateTimeRange currentRange)? initial,
+    TResult Function()? initial,
     TResult Function(DateTimeRange currentRange)? loading,
     TResult Function(DateTimeRange currentRange,
             List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
@@ -954,13 +886,11 @@ abstract class _AstronomyPictureOfTheDayListLoaded implements HomeState {
               astronomyPictureOfTheDayList}) =
       _$AstronomyPictureOfTheDayListLoadedImpl;
 
-  @override
   DateTimeRange get currentRange;
   List<AstronomyPictureOfTheDayModel> get astronomyPictureOfTheDayList;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AstronomyPictureOfTheDayListLoadedImplCopyWith<
           _$AstronomyPictureOfTheDayListLoadedImpl>
@@ -968,11 +898,10 @@ abstract class _AstronomyPictureOfTheDayListLoaded implements HomeState {
 }
 
 /// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
+abstract class _$$ErrorImplCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({DateTimeRange currentRange, String message});
 }
@@ -1045,7 +974,7 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DateTimeRange currentRange) initial,
+    required TResult Function() initial,
     required TResult Function(DateTimeRange currentRange) loading,
     required TResult Function(DateTimeRange currentRange,
             List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)
@@ -1058,7 +987,7 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DateTimeRange currentRange)? initial,
+    TResult? Function()? initial,
     TResult? Function(DateTimeRange currentRange)? loading,
     TResult? Function(DateTimeRange currentRange,
             List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
@@ -1071,7 +1000,7 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DateTimeRange currentRange)? initial,
+    TResult Function()? initial,
     TResult Function(DateTimeRange currentRange)? loading,
     TResult Function(DateTimeRange currentRange,
             List<AstronomyPictureOfTheDayModel> astronomyPictureOfTheDayList)?
@@ -1131,13 +1060,11 @@ abstract class _Error implements HomeState {
       {required final DateTimeRange currentRange,
       required final String message}) = _$ErrorImpl;
 
-  @override
   DateTimeRange get currentRange;
   String get message;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;

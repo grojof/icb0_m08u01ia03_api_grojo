@@ -21,14 +21,7 @@ class Home extends StatelessWidget {
     return BlocProvider(
       create: (context) => HomeBloc()
         ..add(
-          HomeEvent.fetchApodByDateRange(
-            dateRange: DateTimeRange(
-              start: DateTime.now().subtract(
-                const Duration(days: kDaysOfImagesToDisplay),
-              ),
-              end: DateTime.now(),
-            ),
-          ),
+          const HomeEvent.started(),
         ),
       child: const HomeView(),
     );
@@ -99,7 +92,6 @@ class HomeView extends StatelessWidget {
                         ),
                         end: DateTime.now(),
                       ),
-                      initial: (state) => state.currentRange,
                       loading: (state) => state.currentRange,
                       astronomyPictureOfTheDayListLoaded: (state) =>
                           state.currentRange,
@@ -188,7 +180,7 @@ class HomeView extends StatelessWidget {
                   astronomyPictureOfTheDayList:
                       state.astronomyPictureOfTheDayList,
                 ),
-                error: (state) => SliverToBoxAdapter(
+                error: (state) => SliverFillRemaining(
                   child: Center(
                     child: Text(state.message),
                   ),

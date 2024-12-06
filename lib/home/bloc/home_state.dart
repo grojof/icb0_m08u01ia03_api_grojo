@@ -2,9 +2,7 @@ part of 'home_bloc.dart';
 
 @freezed
 class HomeState with _$HomeState {
-  const factory HomeState.initial({
-    required DateTimeRange currentRange,
-  }) = _Initial;
+  const factory HomeState.initial() = _Initial;
 
   const factory HomeState.loading({
     required DateTimeRange currentRange,
