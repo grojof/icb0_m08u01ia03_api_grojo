@@ -80,17 +80,17 @@ android {
         production {
             dimension "default"
             applicationIdSuffix ""
-            manifestPlaceholders = [appName: "Icb0 M08u01ia03 Api Grojo"]
+            manifestPlaceholders = [appName: "Nasa API"]
         }
         staging {
             dimension "default"
             applicationIdSuffix ".stg"
-            manifestPlaceholders = [appName: "[STG] Icb0 M08u01ia03 Api Grojo"]
+            manifestPlaceholders = [appName: "[STG] Nasa API"]
         }
         development {
             dimension "default"
             applicationIdSuffix ".dev"
-            manifestPlaceholders = [appName: "[DEV] Icb0 M08u01ia03 Api Grojo"]
+            manifestPlaceholders = [appName: "[DEV] Nasa API"]
         }
     }
 
